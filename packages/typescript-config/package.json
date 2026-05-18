@@ -1,0 +1,14 @@
+{
+  "name": "@repo/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "base.json",
+    "nestjs.json",
+    "nextjs.json"
+  ],
+  "scripts": {
+    "lint": "echo 'no lint'",
+    "check-types": "echo 'no types'"
+  }
+}

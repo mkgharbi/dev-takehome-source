@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Certalis brand — see packages/tailwind-config */
+
+    /* Background = beige.50 (#FBF9F7) — Certalis app surface */
+    --background: 30 25% 98%;
+    /* Foreground = black.900 (#111315) — Certalis primary text */
+    --foreground: 210 9% 9%;
+
+    /* Cards on white */
+    --card: 0 0% 100%;
+    --card-foreground: 210 9% 9%;
+
+    /* Primary = black.900 (#111315) */
+    --primary: 210 9% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary = black.50 (#F2F6F7) — subtle surface */
+    --secondary: 200 26% 96%;
+    --secondary-foreground: 210 9% 9%;
+
+    /* Muted = black.50 */
+    --muted: 200 26% 96%;
+    --muted-foreground: 200 21% 40%;
+
+    /* Accent = orange.400 (#ED8340) — Certalis signature */
+    --accent: 22 84% 59%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive = red.500 (#F34141) */
+    --destructive: 0 89% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders / inputs = black.100 (#DEE8EA) */
+    --border: 192 19% 90%;
+    --input: 192 19% 90%;
+    --ring: 210 9% 9%;
+
+    --radius: 8px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}

@@ -1,0 +1,52 @@
+{
+  // ESLint — flat config, one working dir per workspace
+  "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [
+    { "pattern": "apps/*" },
+    { "pattern": "packages/*" }
+  ],
+
+  // Format on save + auto-fix ESLint issues
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+
+  // TypeScript — use workspace TS
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.validate.enable": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Hide noise from explorer and search
+  "files.exclude": {
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/*.tsbuildinfo": true,
+    "**/.next": true,
+    "**/.turbo": true,
+    "**/dist": true,
+    "**/pnpm-lock.yaml": true
+  },
+
+  // Tailwind IntelliSense
+  "tailwindCSS.experimental.configFile": {
+    "apps/frontend/tailwind.config.ts": "apps/frontend/**"
+  }
+}

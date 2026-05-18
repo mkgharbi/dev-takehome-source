@@ -1,0 +1,24 @@
+{
+  "name": "certalis-takehome-starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "pnpm -r --aggregate-output lint",
+    "lint:fix": "pnpm -r --aggregate-output lint:fix",
+    "check-types": "turbo check-types",
+    "test": "turbo test"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=24.0.0 <25.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["better-sqlite3"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./tailwind.config.ts",
+  "files": ["tailwind.config.ts"],
+  "scripts": {
+    "lint": "echo 'no lint'",
+    "check-types": "echo 'no types'"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
