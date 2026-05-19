@@ -32,4 +32,14 @@ export class TrainerRepository extends BaseRepository<TrainerEntity> {
       select: ["id", "firstName", "lastName", "email", "certifications"],
     });
   }
+
+  async findByIdWithSessionCount(id: string): Promise<TrainerForList> {
+    const trainer = await this.repository
+      .createQueryBuilder("trainer")
+      .where("trainer.id = :id", { id })
+      .loadRelationCountAndMap("trainer.sessionCount", "trainer.sessions")
+      .getOneOrFail();
+
+    return trainer as unknown as TrainerForList;
+  }
 }

@@ -21,4 +21,9 @@ export class TrainerService {
       pageSize,
     };
   }
+
+  async getTrainer(id: string): Promise<TrainerDto> {
+    const trainer = await this.trainerRepository.findByIdWithSessionCount(id);
+    return mapTrainerToDto(trainer);
+  }
 }
