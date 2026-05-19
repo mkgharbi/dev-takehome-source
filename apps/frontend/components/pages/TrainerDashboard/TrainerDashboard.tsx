@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { FC } from "react";
 
 import { PaginationControls } from "./components/PaginationControls";
+import { RevenueStats } from "./components/RevenueStats";
 import { SessionFilters } from "./components/SessionFilters";
 import { SessionsTable } from "./components/SessionsTable";
 import { TableSkeleton } from "./components/TableSkeleton";
@@ -104,6 +105,14 @@ export const TrainerDashboard: FC<Props> = ({ trainerId }) => {
               <p className="text-xs text-black-500 uppercase tracking-wide">Sessions</p>
             </div>
           </div>
+        </div>
+
+        {/* Revenue Stats — independent of filter state */}
+        <div>
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-black-600">
+            Revenus
+          </h2>
+          <RevenueStats trainerId={trainerId} />
         </div>
 
         {/* Filters Section */}
