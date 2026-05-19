@@ -35,7 +35,10 @@ export class TrainingSessionRepository extends BaseRepository<TrainingSessionEnt
       });
     }
     if (query.status) {
-      qb.andWhere("session.status = :status", { status: query.status });
+      const statuses = query.status.split(",").filter((s) => s.trim());
+      if (statuses.length > 0) {
+        qb.andWhere("session.status IN (:...statuses)", { statuses });
+      }
     }
     if (query.from) {
       qb.andWhere("session.startsAt >= :from", { from: query.from });
