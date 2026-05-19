@@ -3,6 +3,7 @@ import type { PageDto, TrainerDto } from "@repo/api";
 
 import { mapTrainerToDto } from "../mappers/trainer.mapper";
 import { TrainerRepository } from "../repositories/trainer.repository";
+import { TrainerRevenue } from "../types/trainer.repository.types";
 
 @Injectable()
 export class TrainerService {
@@ -25,5 +26,9 @@ export class TrainerService {
   async getTrainer(id: string): Promise<TrainerDto> {
     const trainer = await this.trainerRepository.findByIdWithSessionCount(id);
     return mapTrainerToDto(trainer);
+  }
+
+  getTrainerRevenue(id: string): Promise<TrainerRevenue> {
+    return this.trainerRepository.getRevenue(id);
   }
 }

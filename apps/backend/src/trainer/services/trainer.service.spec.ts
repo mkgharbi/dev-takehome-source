@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 
-import { TrainerRepository } from "../repositories/trainer.repository";
 import { TrainerService } from "./trainer.service";
+import { TrainerRepository } from "../repositories/trainer.repository";
 
 const SAMPLE = {
   id: "uuid-1",

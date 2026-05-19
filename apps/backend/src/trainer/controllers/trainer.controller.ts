@@ -16,4 +16,9 @@ export class TrainerController {
   getTrainer(@Param("id") id: string) {
     return this.trainerService.getTrainer(id);
   }
+
+  @Get(":id/revenue")
+  getTrainerRevenue(@Param("id") id: string) {
+    return this.trainerService.getTrainerRevenue(id);
+  }
 }
