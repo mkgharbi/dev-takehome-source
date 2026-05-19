@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from "@nestjs/common";
+import { Controller, Get, Param, Query } from "@nestjs/common";
 import { PaginationDto } from "@repo/api";
 
 import { TrainerService } from "../services/trainer.service";
@@ -10,5 +10,15 @@ export class TrainerController {
   @Get()
   listTrainers(@Query() query: PaginationDto) {
     return this.trainerService.listTrainers(query.page ?? 1, query.pageSize ?? 20);
+  }
+
+  @Get(":id")
+  getTrainer(@Param("id") id: string) {
+    return this.trainerService.getTrainer(id);
+  }
+
+  @Get(":id/revenue")
+  getTrainerRevenue(@Param("id") id: string) {
+    return this.trainerService.getTrainerRevenue(id);
   }
 }

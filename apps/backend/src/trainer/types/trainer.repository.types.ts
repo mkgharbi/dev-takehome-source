@@ -8,3 +8,14 @@ export type BaseTrainer = Pick<
 export type TrainerForList = BaseTrainer & {
   sessionCount: number;
 };
+
+export type TrainerRevenue = {
+  confirmedRevenueCents: number;
+  pendingRevenueCents: number;
+  cancelledRevenueCents: number;
+  totalRevenueCents: number;
+  monthTotalRevenueCents: number;
+  monthConfirmedRevenueCents: number;
+  monthPendingRevenueCents: number;
+  monthCancelledRevenueCents: number;
+};

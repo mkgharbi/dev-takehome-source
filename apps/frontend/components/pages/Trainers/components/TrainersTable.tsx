@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@repo/ui/table";
+import Link from "next/link";
 import { FC } from "react";
 
 import { CertificationsBadges } from "./CertificationsBadges";
@@ -29,7 +30,12 @@ export const TrainersTable: FC<Props> = ({ trainers }) => (
       {trainers.map((trainer) => (
         <TableRow key={trainer.id}>
           <TableCell className="font-medium">
-            {trainer.firstName} {trainer.lastName}
+            <Link
+              href={`/trainers/${trainer.id}`}
+              className="text-blue-600 hover:underline"
+            >
+              {trainer.firstName} {trainer.lastName}
+            </Link>
           </TableCell>
           <TableCell className="text-muted-foreground">
             {trainer.email}
