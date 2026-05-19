@@ -1,5 +1,5 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+
 import { PaginationControls } from "./PaginationControls";
 
 const mockPush = jest.fn();
@@ -158,28 +158,28 @@ describe("PaginationControls", () => {
   describe("Button click navigation", () => {
     it("navigates to next page when next button is clicked", () => {
       render(<PaginationControls {...defaultProps} page={2} totalPages={5} />);
-      const [, , next] = screen.getAllByRole("button");
+      const [, , next] = screen.getAllByRole("button") as [HTMLElement, HTMLElement, HTMLElement, HTMLElement];
       fireEvent.click(next);
       expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("page=3"));
     });
 
     it("navigates to previous page when prev button is clicked", () => {
       render(<PaginationControls {...defaultProps} page={3} totalPages={5} />);
-      const [, prev] = screen.getAllByRole("button");
+      const [, prev] = screen.getAllByRole("button") as [HTMLElement, HTMLElement, HTMLElement, HTMLElement];
       fireEvent.click(prev);
       expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("page=2"));
     });
 
     it("navigates to first page when first button is clicked", () => {
       render(<PaginationControls {...defaultProps} page={4} totalPages={5} />);
-      const [first] = screen.getAllByRole("button");
+      const [first] = screen.getAllByRole("button") as [HTMLElement, HTMLElement, HTMLElement, HTMLElement];
       fireEvent.click(first);
       expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("page=1"));
     });
 
     it("navigates to last page when last button is clicked", () => {
       render(<PaginationControls {...defaultProps} page={2} totalPages={5} />);
-      const [, , , last] = screen.getAllByRole("button");
+      const [, , , last] = screen.getAllByRole("button") as [HTMLElement, HTMLElement, HTMLElement, HTMLElement];
       fireEvent.click(last);
       expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("page=5"));
     });

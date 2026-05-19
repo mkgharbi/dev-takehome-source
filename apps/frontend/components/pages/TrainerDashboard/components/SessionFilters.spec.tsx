@@ -1,6 +1,6 @@
-import React from "react";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import { SessionFilters } from "./SessionFilters";
 
 const mockPush = jest.fn();
@@ -74,7 +74,7 @@ describe("SessionFilters", () => {
   describe("Date range validation", () => {
     it("shows an error message when end date is before start date", async () => {
       const { container } = render(<SessionFilters />);
-      const [fromInput, toInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput, toInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
 
       fireEvent.change(fromInput, { target: { value: "2025-12-31" } });
       fireEvent.change(toInput, { target: { value: "2025-01-01" } });
@@ -90,7 +90,7 @@ describe("SessionFilters", () => {
 
     it("applies red styling to date inputs when the range is invalid", async () => {
       const { container } = render(<SessionFilters />);
-      const [fromInput, toInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput, toInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
 
       fireEvent.change(fromInput, { target: { value: "2025-12-31" } });
       fireEvent.change(toInput, { target: { value: "2025-01-01" } });
@@ -103,7 +103,7 @@ describe("SessionFilters", () => {
 
     it("clears the error once the date range becomes valid", async () => {
       const { container } = render(<SessionFilters />);
-      const [fromInput, toInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput, toInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
 
       fireEvent.change(fromInput, { target: { value: "2025-12-31" } });
       fireEvent.change(toInput, { target: { value: "2025-01-01" } });
@@ -122,7 +122,7 @@ describe("SessionFilters", () => {
 
     it("removes red styling after the range is corrected", async () => {
       const { container } = render(<SessionFilters />);
-      const [fromInput, toInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput, toInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
 
       fireEvent.change(fromInput, { target: { value: "2025-12-31" } });
       fireEvent.change(toInput, { target: { value: "2025-01-01" } });
@@ -177,7 +177,7 @@ describe("SessionFilters", () => {
         <SessionFilters onApplyFilters={mockCallback} />
       );
 
-      const [fromInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
       fireEvent.change(fromInput, { target: { value: "2025-06-01" } });
 
       await waitFor(() => {
@@ -208,7 +208,7 @@ describe("SessionFilters", () => {
   describe("URL navigation (no callback mode)", () => {
     it("pushes updated URL params when a date filter changes", async () => {
       const { container } = render(<SessionFilters />);
-      const [fromInput] = container.querySelectorAll("input[type='date']");
+      const [fromInput] = Array.from(container.querySelectorAll("input[type='date']")) as [Element, Element];
 
       fireEvent.change(fromInput, { target: { value: "2025-03-15" } });
 

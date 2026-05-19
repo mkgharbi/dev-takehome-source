@@ -5,8 +5,8 @@ import { TrainingSessionRepository } from "./training-session.repository";
 
 describe("TrainingSessionRepository", () => {
   let repository: TrainingSessionRepository;
-  let mockRepository: any;
-  let mockQueryBuilder: any;
+  let mockRepository: Record<string, jest.Mock>;
+  let mockQueryBuilder: Record<string, jest.Mock>;
 
   beforeEach(async () => {
     mockQueryBuilder = {
@@ -86,8 +86,8 @@ describe("TrainingSessionRepository", () => {
       });
 
       const calls = mockQueryBuilder.andWhere.mock.calls;
-      const statusCalls = calls.filter((call: any) =>
-        call[0].includes("session.status")
+      const statusCalls = calls.filter((call: unknown[]) =>
+        (call[0] as string).includes("session.status")
       );
 
       expect(statusCalls).toHaveLength(0);
@@ -188,8 +188,8 @@ describe("TrainingSessionRepository", () => {
       });
 
       const calls = mockQueryBuilder.andWhere.mock.calls;
-      const statusCalls = calls.filter((call: any) =>
-        call[0].includes("session.status")
+      const statusCalls = calls.filter((call: unknown[]) =>
+        (call[0] as string).includes("session.status")
       );
 
       expect(statusCalls).toHaveLength(0);
