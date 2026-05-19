@@ -1,7 +1,6 @@
 import { Type } from "class-transformer";
-import { IsDateString, IsEnum, IsOptional, IsString } from "class-validator";
+import { IsDateString, IsOptional, IsString } from "class-validator";
 
-import { TrainingSessionStatus } from "./training-session.types";
 import { PaginationDto } from "../common/pagination.dto";
 
 export class QueryTrainingSessionsDto extends PaginationDto {
@@ -10,8 +9,8 @@ export class QueryTrainingSessionsDto extends PaginationDto {
   trainerId?: string;
 
   @IsOptional()
-  @IsEnum(TrainingSessionStatus)
-  status?: TrainingSessionStatus;
+  @IsString()
+  status?: string;
 
   @IsOptional()
   @IsDateString()
